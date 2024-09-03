@@ -1,4 +1,4 @@
-# # chrome.exe --remote-debugging-port=8989 --user-data-dir=C:\Users\YamagantiMuraliKrish\Videos\Chrome
+# # chrome.exe --remote-debugging-port=8989 --user-data-dir=D:\Chrome Driver\chromedriver
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
