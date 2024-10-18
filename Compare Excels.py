@@ -4,8 +4,8 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
 # Define the folder paths
-folder_july = r'S:\Program July'
-folder_august = r'S:\Program August'
+folder_old_file = r'S:\Old File'
+folder_new_file = r'S:\New File'
 
 # Function to find the first Excel file in a folder
 def find_excel_file(folder_path):
@@ -15,25 +15,25 @@ def find_excel_file(folder_path):
     return None
 
 # Get the Excel files from both folders
-file_july = find_excel_file(folder_july)
-file_august = find_excel_file(folder_august)
+file_old = find_excel_file(folder_old_file)
+file_new = find_excel_file(folder_new_file)
 
-if file_july and file_august:
+if file_old and file_new:
     # Load the Excel sheets into dataframes
-    df_july = pd.read_excel(file_july)
-    df_august = pd.read_excel(file_august)
+    df_old = pd.read_excel(file_old)
+    df_new = pd.read_excel(file_new)
 
     # Remove duplicates in each dataframe (if necessary)
-    df_july = df_july.drop_duplicates()
-    df_august = df_august.drop_duplicates()
+    df_old = df_old.drop_duplicates()
+    df_new = df_new.drop_duplicates()
 
     # Finding duplicates in 'Reimbursement ID', 'Claims Number', and 'Date'
-    duplicate_reimbursement = pd.merge(df_july[['Reimbursement ID']], df_august[['Reimbursement ID']], on='Reimbursement ID', how='inner')
-    duplicate_claims = pd.merge(df_july[['Claims Number']], df_august[['Claims Number']], on='Claims Number', how='inner')
-    duplicate_date = pd.merge(df_july[['Date']], df_august[['Date']], on='Date', how='inner')
+    duplicate_reimbursement = pd.merge(df_old[['Reimbursement ID']], df_new[['Reimbursement ID']], on='Reimbursement ID', how='inner')
+    duplicate_claims = pd.merge(df_old[['Claims Number']], df_new[['Claims Number']], on='Claims Number', how='inner')
+    duplicate_date = pd.merge(df_old[['Date']], df_new[['Date']], on='Date', how='inner')
 
-    # Load the August Excel file into openpyxl workbook
-    wb = load_workbook(file_august)
+    # Load the New File Excel into openpyxl workbook
+    wb = load_workbook(file_new)
     ws = wb.active
 
     # Print headers to verify column positions
@@ -81,7 +81,7 @@ if file_july and file_august:
                     print(f"Highlighted entire row {row} for Date: {date_value}")
 
     # Save changes to the same file
-    wb.save(file_august)
-    print(f"Duplicates highlighted and saved in the same file: {file_august}")
+    wb.save(file_new)
+    print(f"Duplicates highlighted and saved in the same file: {file_new}")
 else:
     print("No Excel file found in one of the folders.")

@@ -47,7 +47,7 @@ try:
         pyperclip.copy(data_text)
 
         # Run the code block
-        driver.get("https://sellercentral.amazon.com/help/hub/reference/GGEV4254LJJ9BAEG")
+        driver.get("https://sellercentral.amazon.ca/help/hub/reference/GGEV4254LJJ9BAEG?mons_sel_mkid=amzn1.mp.o.A2EUQ1WTGCTBG2&mons_sel_mcid=amzn1.merchant.o.A24UNAW0BT200P&mons_sel_persist=true&mons_sel_dc=AAAAZs9RExw%3D")
         print(driver.title)
 
         # Get the initial height of the page

@@ -26,9 +26,6 @@ driver = webdriver.Chrome(options=c_options)
 driver.get('https://sellercentral.amazon.com/help/center?mons_redirect=stck_reroute')
 print(driver.title)
 
-driver.get("https://sellercentral.amazon.com/help/center")
-print(driver.title)
-
 driver.implicitly_wait(10) # seconds
 
 # Find the host element
