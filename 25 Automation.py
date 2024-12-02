@@ -17,7 +17,7 @@ driver = webdriver.Chrome(service=service, options=opt)
 
 try:
     # Load the Excel file
-    workbook = openpyxl.load_workbook('C:\\Users\\YamagantiMuraliKrish\\Desktop\\ABC.xlsx')
+    workbook = openpyxl.load_workbook('S:\\ABC.xlsx')
 
     # Select the desired sheet
     sheet = workbook['ABC']
@@ -47,7 +47,7 @@ try:
         pyperclip.copy(data_text)
 
         # Run the code block
-        driver.get("https://sellercentral.amazon.ca/help/hub/reference/GGEV4254LJJ9BAEG?mons_sel_mkid=amzn1.mp.o.A2EUQ1WTGCTBG2&mons_sel_mcid=amzn1.merchant.o.A24UNAW0BT200P&mons_sel_persist=true&mons_sel_dc=AAAAZs9RExw%3D")
+        driver.get("https://sellercentral.amazon.com/help/hub/reference/GGEV4254LJJ9BAEG")
         print(driver.title)
 
         # Get the initial height of the page
@@ -86,6 +86,13 @@ try:
 
         # Click on the submit button
         pyautogui.click(x=890, y=324, duration=0.3)
+        time.sleep(10)
+
+        # Scroll down by a certain amount
+        pyautogui.scroll(-1000)  # Adjust the scrolling amount as needed
+
+        # Click on the submit button
+        pyautogui.click(x=1181, y=804, duration=0.3)
         time.sleep(3)
 
         # Store the handle of the primary window
